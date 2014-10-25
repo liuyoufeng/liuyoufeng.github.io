@@ -78,9 +78,9 @@ module.exports = function (grunt) {
     },
     connect: {
       options: {
-        port: 9000,
+        port: 80,
         // change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        hostname: '0.0.0.0'
       },
       livereload: {
         options: {
@@ -218,6 +218,9 @@ module.exports = function (grunt) {
             '*.{ico,txt}',
             '.htaccess',
             '*.html',
+            'layouts/**',
+            'styles/**',
+            'pages/**',
             'elements/**',
             '!elements/**/*.css',
             'images/{,*/}*.{webp,gif}',
@@ -286,9 +289,9 @@ module.exports = function (grunt) {
     'copy',
     'useminPrepare',
     'imagemin',
-    'concat',
+    //'concat',
     'autoprefixer',
-    'uglify',
+    //'uglify',
     'cssmin',
     'vulcanize',
     'usemin',

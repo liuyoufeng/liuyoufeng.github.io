@@ -1,0 +1,118 @@
+
+
+<link rel="import" href="../styles/core-style.html">
+
+<polymer-element name="scaffold-layout" attributes="selected color">
+	<template>
+		<core-style ref="layout"></core-style>
+		<style>
+			:host /deep/ core-toolbar {
+				background-color: #2f83d0;
+				color: #fff;
+				border-bottom: 1px solid #ddd;
+			}
+			:host /deep/ core-toolbar.orange {
+				background-color: #2f83d0;
+			}
+			.content {
+				padding: 5px 20px 40px 20px;
+			}
+			:host /deep/ core-header-panel[main] {
+				background-color: #fff;
+			}
+			:host /deep/ core-header-panel[navigation] {
+				background-color: #fff;
+			}
+			:host /deep/ core-header-panel[navigation] core-item {
+				padding: 2px 12px;
+				line-height: 40px;
+			}
+			:host /deep/ core-header-panel[navigation] a:not(:first-of-type) core-item {
+				border-top: 1px solid #f5f5f5;
+			}
+			:host /deep/ core-header-panel[navigation] a {
+				color: #555;
+				text-decoration: none;
+			}
+			:host /deep/ core-header-panel[navigation] a:hover core-item,
+			:host /deep/ core-header-panel[navigation] a:focus core-item {
+				background-color: #fcfcfc;
+				color: #222;
+				border-right: 6px solid #f5f5f5;
+			}
+			:host /deep/ core-header-panel[navigation] a[active] core-item {
+				border-right: 6px solid #f5f5f5;
+			}
+			:host /deep/ core-toolbar {
+				background-color: #03a9f4;
+				color: #fff;
+			}
+			
+			:host /deep/ paper-button{
+				font-size: 14px;
+				color: #FFF;
+			}
+			
+			:host /deep/ paper-dialog{
+				font-size: 12px;
+				width:800px;
+				height:600px;
+			}
+		</style>
+		<core-scaffold>
+			<core-header-panel navigation flex mode="seamed">
+				<core-toolbar class="{{color}}">SmartClear</core-toolbar>
+				<div>
+					<a is="pushstate-anchor" active?="{{selected == 'home'}}" href="../#/"><core-item icon="home" label="Home"></core-item></a>
+					<a is="pushstate-anchor" active?="{{selected == 'api'}}" href="../#/api"><core-item icon="settings" label="API"></core-item></a>
+					<a is="pushstate-anchor" active?="{{selected == 'databinding'}}" href="../#/databinding/1337?queryParam1=Routing%20with%20Web%20Components!"><core-item icon="polymer" label="Data Binding"></core-item></a>
+					<!--a is="pushstate-anchor" active?="{{selected == 'layouts'}}" href="../#/layouts"><core-item icon="view-quilt" label="Layouts"></core-item></a>
+					<a is="pushstate-anchor" active?="{{selected == 'core-animated-pages'}}" href="../#/core-animated-pages"><core-item icon="swap-horiz" label="core-animated-pages"></core-item></a>
+					<a is="pushstate-anchor" active?="{{selected == 'notes'}}" href="../#/notes"><core-item icon="info-outline" label="Notes"></core-item></a>
+					<a href="https://github.com/erikringsmuth/app-router-examples"><core-item icon="drive-document" label="Example Code"></core-item></a>
+					<a href="https://github.com/erikringsmuth/app-router"><core-item icon="social:post-github" label="GitHub"></core-item></a-->
+				</div>
+			</core-header-panel>
+	
+			<div tool>
+				<content select=".title"></content>
+			</div>
+			
+			<core-toolbar tool flex>
+				<paper-button on-click="{{toggleDialog}}">New</paper-button>
+				<!--paper-input label="Search..."></paper-input>
+				<paper-icon-button icon="refresh"></paper-icon-button>
+				<paper-icon-button icon="add"></paper-icon-button-->
+			</core-toolbar>
+			
+			<div class="content">
+				<content></content>
+			</div>
+		</core-scaffold>
+		
+		<paper-dialog id="testing" heading="New Shipment" transition="xxx">
+			<p>Lorem ipsum dolor sit amet, doming noster at quo, nostrud lucilius rationibus ea duo. Vim no mucius dolores. No bonorum voluptatum vis, has iudicabit consectetuer ne. Nullam sensibus vim id, et quo graeci perpetua.</p>
+
+			<p>Id qui scripta laboramus dissentiet, verterem partiendo vim at. Stet dissentiet ut mei. Iriure facilis eloquentiam pro eu, nec an esse inciderint. In meliore abhorreant sea. Eros nostro ocurreret at nec. Cu per regione persecuti.</p>
+
+			<p>Lorem ipsum dolor sit amet, doming noster at quo, nostrud lucilius rationibus ea duo. Vim no mucius dolores. No bonorum voluptatum vis, has iudicabit consectetuer ne. Nullam sensibus vim id, et quo graeci perpetua.</p>
+
+			<paper-button dismissive></paper-button>
+			<paper-button affirmative></paper-button>
+			<paper-button affirmative autofocus></paper-button>
+		</paper-dialog>
+	</template>
+	
+	<script>
+		Polymer({
+			ready: function() {
+			//...
+			},
+			toggleDialog: function(event, detail, sender) {
+				var dialog = this.shadowRoot.querySelector('paper-dialog');
+				dialog.toggle();
+			}
+		});
+		
+	</script>
+</polymer-element>
